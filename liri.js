@@ -20,8 +20,26 @@ switch (command){
 }
 
 function getTweets(){
-		console.log("gonna get the tweets");
+		var twitter = require("twitter");
 
+		var client = new twitter({
+			consumer_key: theKeys.twitterKeys.consumer_key,
+			consumer_secret: theKeys.twitterKeys.consumer_secret,
+  			access_token_key: theKeys.twitterKeys.access_token_key,
+  			access_token_secret: theKeys.twitterKeys.access_token_secret
+		});
+
+		var params = {screen_name: 'yaylove2code', count: 20};
+		client.get('statuses/user_timeline', params, function(error, tweets, response){
+		if (error) 
+			throw error;
+		else{
+			for(i = 0; i < tweets.length; i++){
+				console.log(tweets[i].created_at);
+				console.log(tweets[i].text);
+			}
+		}		
+	});
 }
 
 function spotifySong(){
@@ -48,14 +66,16 @@ function movieThis(){
 
 	request(queryURL, function(error, response, body){
 		if(!error && response.statusCode === 200){
-			console.log("Title: " + JSON.parse(body).Title);
-			console.log("Year: " + JSON.parse(body).Year);
-			console.log("IMDB Rating: "+ JSON.parse(body).imdbRating);
-			console.log("Rotten Tomatoes Rating: "+ JSON.parse(body).Ratings[1].Value);
-			console.log("Country: " + JSON.parse(body).Country);
-			console.log("Language: " + JSON.parse(body).Language);
-			console.log("Plot: " + JSON.parse(body).Plot);
-			console.log("Actors: " + JSON.parse(body).Actors);
+			var bodyInfo = JSON.parse(body);
+
+			console.log("Title: " + bodyInfo.Title);
+			console.log("Year: " + bodyInfo.Year);
+			console.log("IMDB Rating: "+ bodyInfo.imdbRating);
+			console.log("Rotten Tomatoes Rating: "+ bodyInfo.Ratings[1].Value);
+			console.log("Country: " + bodyInfo.Country);
+			console.log("Language: " + bodyInfo.Language);
+			console.log("Plot: " + bodyInfo.Plot);
+			console.log("Actors: " + bodyInfo.Actors);
 		}
 	});
 }
