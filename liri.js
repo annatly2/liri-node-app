@@ -43,8 +43,33 @@ function getTweets(){
 }
 
 function spotifySong(){
+	var Spotify = require('node-spotify-api');
+	var songArg = process.argv;
+	var songTitle = "";
 
+	for (var i = 3; i < songArg.length; i++){
+		if (i > 3 && i < songArg.length){
+			songTitle = songTitle + "+" + songArg[i];
+		}else{
+			songTitle += songArg[i];
+		}
+	}	
 
+	var spotify = new Spotify({
+	  id: theKeys.spotifyKeys.client_id,
+	  secret: theKeys.spotifyKeys.client_secret
+	});
+	 
+	spotify.search({ type: 'track', query: songTitle, limit: 1}, function(err, data) {
+		if (err) {
+			return console.log('Error occurred: ' + err);
+		}
+			var songInfo = data.tracks.items[0];
+			console.log(songInfo.artists[0].name);
+			console.log(songInfo.name);
+			console.log(songInfo.album.external_urls.spotify);
+			console.log(songInfo.album.name);
+	});
 }
 
 function movieThis(){
