@@ -47,6 +47,10 @@ function spotifySong(){
 	var songArg = process.argv;
 	var songTitle = "";
 
+	if(!process.argv[3]){
+		songTitle = "The Sign Ace of Base";
+	}
+
 	for (var i = 3; i < songArg.length; i++){
 		if (i > 3 && i < songArg.length){
 			songTitle = songTitle + "+" + songArg[i];
@@ -65,10 +69,10 @@ function spotifySong(){
 			return console.log('Error occurred: ' + err);
 		}
 			var songInfo = data.tracks.items[0];
-			console.log(songInfo.artists[0].name);
-			console.log(songInfo.name);
-			console.log(songInfo.album.external_urls.spotify);
-			console.log(songInfo.album.name);
+			console.log("Artist(s): " + songInfo.artists[0].name);
+			console.log("Song Name: " + songInfo.name);
+			console.log("Preview Link: " + songInfo.album.external_urls.spotify);
+			console.log("Album: " + songInfo.album.name);
 	});
 }
 
@@ -76,6 +80,10 @@ function movieThis(){
 	var request = require("request");
 	var movieArg = process.argv;
 	var movieTitle = "";
+
+	if(!process.argv[3]){
+		movieTitle = "Mr. Nobody";
+	}
 
 	for (var i = 3; i < movieArg.length; i++){
 		if (i > 3 && i < movieArg.length){
@@ -106,5 +114,23 @@ function movieThis(){
 }
 
 function doWhat(){
+	var fs = require("fs");
+	fs.readFile("random.txt", "utf8", function(error,data){
+		if (error){
+			return console.log(error);
+		}
 
+
+		console.log(data);
+		var dataArr = data.split(",");
+		console.log(dataArr);
+		var first = dataArr[0];
+		var second = dataArr[1];
+		console.log(first);
+
+		command = first;
+		songTitle = second;
+
+	});
 }
+
