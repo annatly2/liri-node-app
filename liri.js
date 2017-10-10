@@ -1,5 +1,7 @@
 var theKeys = require("./keys.js");
 var command = process.argv[2];
+var fs = require("fs");
+
 
 switch (command){
 	case "my-tweets":
@@ -49,6 +51,11 @@ function spotifySong(){
 
 	if(!process.argv[3]){
 		songTitle = "The Sign Ace of Base";
+	}
+
+	if(process.argv[2] === "do-what-it-says"){
+		songTitle = "I Want it That Way";
+
 	}
 
 	for (var i = 3; i < songArg.length; i++){
@@ -114,23 +121,12 @@ function movieThis(){
 }
 
 function doWhat(){
-	var fs = require("fs");
 	fs.readFile("random.txt", "utf8", function(error,data){
 		if (error){
 			return console.log(error);
 		}
-
-
 		console.log(data);
-		var dataArr = data.split(",");
-		console.log(dataArr);
-		var first = dataArr[0];
-		var second = dataArr[1];
-		console.log(first);
-
-		command = first;
-		songTitle = second;
+		spotifySong();
 
 	});
 }
-
