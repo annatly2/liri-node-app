@@ -2,8 +2,7 @@ console.log('this is loaded');
 
 var twitterKeys = {
   consumer_key: 'ABVT1HDA7y5zVLpxe1nE04xmC',
-  consumer_secret: '2BjpBBJYHgA52w0N45anKxjtf6U4IvVuxOzrfYUMO1wwTCdCRL'
-,
+  consumer_secret: '2BjpBBJYHgA52w0N45anKxjtf6U4IvVuxOzrfYUMO1wwTCdCRL',
   access_token_key: '914675685762809856-NcFXL1xbTAfu9kLXYZODRfXPBpwXWBc',
   access_token_secret: 'YMxtiQBgOKdfjID2Ow1d2UjQWUehJgyi8AyEv2j8cKN68',
 }

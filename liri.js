@@ -2,7 +2,6 @@ var theKeys = require("./keys.js");
 var command = process.argv[2];
 var fs = require("fs");
 
-
 switch (command){
 	case "my-tweets":
 		getTweets();
@@ -55,7 +54,6 @@ function spotifySong(){
 
 	if(process.argv[2] === "do-what-it-says"){
 		songTitle = "I Want it That Way";
-
 	}
 
 	for (var i = 3; i < songArg.length; i++){
@@ -126,7 +124,9 @@ function doWhat(){
 			return console.log(error);
 		}
 		console.log(data);
-		spotifySong();
-
+		var array = data.split(",");
+		if(array[0]==="spotify-this-song"){
+			spotifySong();
+		}
 	});
 }
