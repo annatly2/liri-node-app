@@ -3,6 +3,8 @@
 LIRI is a Language Interpretation and Recognition Interface. LIRI is a command line node app that takes in parameters and gives you back data.
 Make sure to follow the steps below to find out what LIRI can do!
 
+***
+
 ## To get started...
 
 1. Clone this git repository. 
@@ -11,6 +13,7 @@ Make sure to follow the steps below to find out what LIRI can do!
 
 3. Type `node liri.js` and one of the four commands below.
 
+***
 
 LIRI commands:
 
@@ -22,6 +25,7 @@ LIRI commands:
 
 :clipboard:  `do-what-it-says`
 
+***
 
 1. `node liri.js my-tweets`
 
